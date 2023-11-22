@@ -1,21 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Welcome to my blog{% endblock %}
-
-
+{% block title %}Post - {{post.title}} {% endblock %}
 {% block content %}
-{% for post in posts %}
+
     <div class="container">
         <div class="card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-            <h4 class="my-0 font-weight-normal"><a href = "{% url 'detail' post.id %}">{{post.title}}</a></h4>
+            <h4 class="my-0 font-weight-normal">{{post.title}} </h4>
             </div>
             <div class="card-body">
-                <p>{{post.body}}</p>
+              <p>{{post.body}}</p>
             </div>
         </div>
     </div>
 
-{% endfor %}
+<a href="{% url 'delete' post.id %}" class="btn btn-danger btn-small" >Delete Post</a>
+<a href="{% url 'home' %}">Home</a>
 
 {% endblock %}
